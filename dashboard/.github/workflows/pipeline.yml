@@ -1,0 +1,48 @@
+name: AQI Automated Data & Model Pipeline
+
+on:
+  schedule:
+    # Run hourly for feature updating
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas numpy requests python-dotenv scikit-learn shap joblib matplotlib seaborn
+
+    - name: Fetch Latest Data
+      env:
+        OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+      run: |
+        python feature_pipeline/fetch_data.py
+
+    - name: Clean & Process Features
+      run: |
+        python feature_pipeline/clean_data.py
+        python feature_pipeline/feature_engineering.py
+
+    - name: Run Predictions & SHAP
+      run: |
+        python prediction.py
+
+    - name: Commit and Push Updated Artifacts
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add models/latest_predictions.json data/processed/
+        git diff-index --quiet HEAD || git commit -m "Auto-update predictions and features [skip ci]"
+        git push

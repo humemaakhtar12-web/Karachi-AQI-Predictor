@@ -1,0 +1,18 @@
+# Virtual Environments
+venv/
+hopsworks_venv/
+env/
+ENV/
+
+# Sensitive Information
+.env
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS Specific
+.DS_Store
+Thumbs.db

@@ -1,0 +1,92 @@
+{
+    "latest_timestamp": "2026-08-17 23:00:00+00:00",
+    "current_aqi": 3,
+    "predictions": {
+        "24h": {
+            "aqi": 3,
+            "category": "Moderate"
+        },
+        "48h": {
+            "aqi": 3,
+            "category": "Moderate"
+        },
+        "72h": {
+            "aqi": 2,
+            "category": "Fair"
+        }
+    },
+    "explainability": {
+        "24h": {
+            "top_features": [
+                {
+                    "feature": "pm10",
+                    "shap_value": 0.062
+                },
+                {
+                    "feature": "pm2_5",
+                    "shap_value": 0.0452
+                },
+                {
+                    "feature": "openweather_aqi",
+                    "shap_value": 0.0339
+                },
+                {
+                    "feature": "so2",
+                    "shap_value": 0.028
+                },
+                {
+                    "feature": "aqi_rolling_mean_6h",
+                    "shap_value": 0.0265
+                }
+            ]
+        },
+        "48h": {
+            "top_features": [
+                {
+                    "feature": "so2",
+                    "shap_value": 0.021
+                },
+                {
+                    "feature": "pm10",
+                    "shap_value": 0.0198
+                },
+                {
+                    "feature": "no2_rolling_mean_24h",
+                    "shap_value": 0.0183
+                },
+                {
+                    "feature": "pm2_5",
+                    "shap_value": 0.0174
+                },
+                {
+                    "feature": "week_of_year",
+                    "shap_value": 0.0167
+                }
+            ]
+        },
+        "72h": {
+            "top_features": [
+                {
+                    "feature": "day_of_year",
+                    "shap_value": 0.0516
+                },
+                {
+                    "feature": "month_sin",
+                    "shap_value": 0.0414
+                },
+                {
+                    "feature": "co_lag_24h",
+                    "shap_value": 0.0397
+                },
+                {
+                    "feature": "month",
+                    "shap_value": 0.033
+                },
+                {
+                    "feature": "month_cos",
+                    "shap_value": 0.0317
+                }
+            ]
+        }
+    }
+}
