@@ -1,5 +1,5 @@
 {
-    "features": [
+    "feature_names": [
         "temperature",
         "humidity",
         "pressure",
@@ -68,11 +68,5 @@
         "co_change_24h",
         "no2_change_24h",
         "o3_change_24h"
-    ],
-    "number_of_features": 68,
-    "targets": [
-        "target_aqi_24h",
-        "target_aqi_48h",
-        "target_aqi_72h"
     ]
 }
